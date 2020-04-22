@@ -16,7 +16,8 @@ namespace TextFilter
             // CHANGE don't want to remove punctuation that isn't directly attached to a word, e.g. ".,:;?"
             // but if the punctuation is part of the individual string then it will be removed when that word is filtered out 
             // and the prose will no longer make sense
-            var listOfWords = inputText.Split(" ").ToList(); ;// CHANGE to put inside a string splitter class?
+            var delimiters = new string[] { " ", "\r\n" };
+            var listOfWords = inputText.Split(delimiters, StringSplitOptions.None).ToList(); ;// CHANGE to put inside a string splitter class?
             // CHANGE to delimit by other kinds of whitespace?
 
             var outputTextList = new List<string>();
