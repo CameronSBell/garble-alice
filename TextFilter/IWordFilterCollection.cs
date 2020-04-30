@@ -5,6 +5,6 @@ namespace TextFilter
 {
     interface IWordFilterCollection
     {
-        public List<Func<bool>> Filters { get; }
+        public List<Func<string, bool>> Filters { get; }
     }
 }

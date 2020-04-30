@@ -5,16 +5,16 @@ namespace TextFilter
 {
     public class WordFilterCollection : IWordFilterCollection
     {
-        public List<Func<bool>> Filters { get; }
+        public List<Func<string, bool>> Filters { get; }
 
-        public WordFilterCollection(string word)
+        public WordFilterCollection()
         {
             var filters = new WordFilters();
-            Filters = new List<Func<bool>>()
+            Filters = new List<Func<string, bool>>()
             {
-                () => filters.Filter1(word),
-                () => filters.Filter2(word),
-                () => filters.Filter3(word),
+                filters.Filter1,
+                filters.Filter2,
+                filters.Filter3,
             };
         }
     }

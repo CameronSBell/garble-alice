@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace TextFilter
@@ -6,10 +7,12 @@ namespace TextFilter
     public class WordFilterExecutor
     {
         private readonly IWordFilterCollection _wordFilters;
+        private readonly string _word;
 
         public WordFilterExecutor(string word)
         {
-            _wordFilters = new WordFilterCollection(word);
+            _wordFilters = new WordFilterCollection();
+            _word = word;
         }
         public async Task<bool> isWordFilteredOut()
         {
@@ -41,7 +44,7 @@ namespace TextFilter
 
             foreach (var filter in _wordFilters.Filters)
             {
-                pendingFilters.Add(Task.Factory.StartNew(filter));
+                pendingFilters.Add(Task.Factory.StartNew(() => filter(_word)));
             }
       
             return pendingFilters;
