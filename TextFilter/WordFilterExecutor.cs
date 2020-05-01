@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace TextFilter
 {
-    public class WordFilterExecutor
+    public class WordFilterExecutor : IWordFilterExecutor
     {
         private readonly IWordFilterCollection _wordFilters;
         private readonly string _word;
